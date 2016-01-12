@@ -64,6 +64,82 @@
 
                 </xsl:for-each>
 
+                <table border="2">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Network
+                        </th>
+                        <th>
+                            Viewers
+                        </th>
+                    </tr>
+
+                    <xsl:for-each select="tvshows/show">
+
+                        <xsl:if test="release &lt; 2008">
+                            <tr>
+                                <td>
+                                    <xsl:value-of select="name"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="network"/>
+                                </td>
+                                <td>
+                                    <xsl:value-of select="viewers"/>
+                                </td>
+                            </tr>
+                        </xsl:if>
+
+                        <xsl:choose>
+                            <xsl:when test="release > 2006">
+                                <tr bgcolor="yellow">
+                                    <td>
+                                        <xsl:value-of select="name"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="network"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="viewers"/>
+                                    </td>
+                                </tr>
+                            </xsl:when>
+
+                            <xsl:when test="release = 2015">
+                                <tr bgcolor="orange">
+                                    <td>
+                                        <xsl:value-of select="name"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="network"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="viewers"/>
+                                    </td>
+                                </tr>
+                            </xsl:when>
+
+                            <xsl:otherwise>
+                                <tr bgcolor="pink">
+                                    <td>
+                                        <xsl:value-of select="name"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="network"/>
+                                    </td>
+                                    <td>
+                                        <xsl:value-of select="viewers"/>
+                                    </td>
+                                </tr>
+                            </xsl:otherwise>
+                        </xsl:choose>
+
+                    </xsl:for-each>
+                </table>
+
             </body>
 
         </html>
